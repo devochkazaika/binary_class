@@ -21,7 +21,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class SimpleJavaFXApp extends Application {
-
+    final int s = 800;
     public List<Coords> red = new ArrayList<>();
     public List<Coords> green = new ArrayList<>();
     public List<Coords> line = new ArrayList<>();
@@ -31,6 +31,18 @@ public class SimpleJavaFXApp extends Application {
     public void start(Stage stage) {
         root = new Pane();
         initUI(stage);
+    }
+
+    private void draw_line(){
+        Model k = new Model(red, green);
+        List<Coords> t = k.get();
+        int i = 0;
+        line = t;
+        // for (int a : t) {
+        //     System.out.println(a);
+        //     line.add(new Coords(800/s*i, 800/s*a));
+        //     i++;
+        // }
     }
 
     private void create_oval(double x, double y, boolean t){
@@ -65,13 +77,13 @@ public class SimpleJavaFXApp extends Application {
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
             { 
-               drawLines(gc); 
+                draw_line();
+                drawLines(gc);
             } 
         }; 
 
         Button b = new Button("button"); 
         b.setOnAction(event); 
-
         root.getChildren().add(s);
         root.getChildren().add(canvas);
         root.getChildren().add(b);
