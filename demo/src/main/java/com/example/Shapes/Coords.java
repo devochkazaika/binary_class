@@ -1,8 +1,8 @@
 package com.example.Shapes;
 
 public class Coords {
-    double x;
-    double y;
+    public double x;
+    public double y;
     Coords(double a, double b){
         x = a;
         y = b;
